@@ -1,9 +1,6 @@
 package br.com.dio.desafio.domain;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Dev {
     private String name;
@@ -35,15 +32,25 @@ public class Dev {
     }
 
     public void registerBootcamp(Bootcamp bootcamp){
-
+        this.registeredContents.addAll(bootcamp.getContents());
+        bootcamp.getRegisteredDevs().add(this);
     }
 
     public void progress(){
-
+        Optional<Content> content = this.registeredContents.stream().findFirst();
+        if(content.isPresent()){
+            this.completedContents.add(content.get());
+            this.registeredContents.remove(content.get());
+        }else{
+            System.err.println("You are not enrolled in any content.");
+        }
     }
 
-    public void calculateXP(){
-
+    public double calculateXP(){
+        return this.completedContents
+                .stream()
+                .mapToDouble(Content::calculateXp)
+                .sum();
     }
 
     @Override
