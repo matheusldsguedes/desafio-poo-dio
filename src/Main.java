@@ -1,4 +1,6 @@
+import br.com.dio.desafio.domain.Bootcamp;
 import br.com.dio.desafio.domain.Course;
+import br.com.dio.desafio.domain.Dev;
 import br.com.dio.desafio.domain.Mentoring;
 
 import java.time.LocalDate;
@@ -22,8 +24,42 @@ public class Main {
         mentoria1.setDescription("java mentoring Description");
         mentoria1.setDate(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria1);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setName("Bootcamp java developer");
+        bootcamp.setDescription("Bootcamp java developer description");
+        bootcamp.getContents().add(curso1);
+        bootcamp.getContents().add(curso2);
+        bootcamp.getContents().add(mentoria1);
+
+        System.out.println("-----Camila------");
+        Dev devCamila = new Dev();
+        devCamila.setName("Camila");
+        devCamila.registerBootcamp(bootcamp);
+        System.out.println("Camila's registered content: " + devCamila.getRegisteredContents());
+        System.out.println("XP: " + devCamila.calculateXP());
+
+
+        devCamila.progress();
+        devCamila.progress();
+        System.out.println("----- after progress ------");
+        System.out.println("Camila's registered content: " + devCamila.getRegisteredContents());
+        System.out.println("Camila's completed content: " + devCamila.getCompletedContents());
+        System.out.println("XP: " + devCamila.calculateXP());
+
+
+        System.out.println("\n");
+        System.out.println("-----Joao------");
+
+        Dev devJoao = new Dev();
+        devJoao.setName("joao");
+        devJoao.registerBootcamp(bootcamp);
+        System.out.println("joao's registered content: " + devJoao.getRegisteredContents());
+        System.out.println("XP: " + devJoao.calculateXP());
+
+        devJoao.progress();
+        System.out.println("----- after progress ------");
+        System.out.println("joao's registered content: " + devJoao.getRegisteredContents());
+        System.out.println("joao's completed content: " + devJoao.getCompletedContents());
+        System.out.println("XP: " + devJoao.calculateXP());
     }
 }
