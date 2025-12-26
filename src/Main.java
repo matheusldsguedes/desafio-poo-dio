@@ -8,12 +8,12 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         Course curso1 = new Course();
-        curso1.setCourse("Java course");
+        curso1.setTitle("Java course");
         curso1.setDescription("java course description");
         curso1.setWorkload(8);
 
         Course curso2 = new Course();
-        curso2.setCourse("Js course");
+        curso2.setTitle("Js course");
         curso2.setDescription("js course description");
         curso2.setWorkload(4);
 

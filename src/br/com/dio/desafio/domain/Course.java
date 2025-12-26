@@ -1,28 +1,15 @@
 package br.com.dio.desafio.domain;
 
-public class Course {
+public class Course extends Content{
 
-    private String course;
-    private String description;
     private int workload;
 
     public Course() {
     }
 
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    @Override
+    public double calculateXp() {
+        return STD_XP * workload;
     }
 
     public int getWorkload() {
@@ -36,8 +23,8 @@ public class Course {
     @Override
     public String toString() {
         return "course{" +
-                "course='" + course + '\'' +
-                ", description='" + description + '\'' +
+                "course='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
                 ", workload=" + workload +
                 '}';
     }
